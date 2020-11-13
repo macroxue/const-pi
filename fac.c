@@ -30,7 +30,7 @@ typedef struct {
 
 sieve_t  *sieve = NULL;
 unsigned sieve_size;
-fac_t    ftmp, fmul;
+fac_t    ftmp, fmult;
 
 #define INIT_FACS 32
 
@@ -147,11 +147,11 @@ void fac_mul_bp(fac_t f, unsigned base, unsigned pow)
 void fac_mul(fac_t f, fac_t g)
 {
     fac_t t;
-    fac_resize(fmul, f[0].num_facs + g[0].num_facs);
-    fac_mul2(fmul, f, g);
+    fac_resize(fmult, f[0].num_facs + g[0].num_facs);
+    fac_mul2(fmult, f, g);
     t[0]    = f[0];
-    f[0]    = fmul[0];
-    fmul[0] = t[0];
+    f[0]    = fmult[0];
+    fmult[0] = t[0];
 }
 
 void fac_show(fac_t f)
@@ -232,7 +232,7 @@ void fac_sieve_init(unsigned size)
         return;
 
     fac_init(ftmp);
-    fac_init(fmul);
+    fac_init(fmult);
 
     sieve = (sieve_t *)malloc(sizeof(sieve_t)*size/2);
 
